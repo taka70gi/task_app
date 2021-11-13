@@ -1,0 +1,44 @@
+<h3>スケジュール詳細</h3>
+
+<table>
+    <tr>
+        <th>タイトル</th>
+        <td><%= @task.title %></td>
+    </tr>
+    <tr>
+        <th>開始日</th>
+        <td><%= @task.start_on %></td>
+    </tr>
+    <tr>
+        <th>終了日</th>
+        <td><%= @task.end_on %></td>
+    </tr>
+    <tr>
+        <th>投稿日時</th>
+        <td><%= @task.updated_at.to_s(:datetime_jp) %></td>
+    </tr>
+    <tr>
+        <th>終日</th>
+        <td>
+        <% if @task.all_day %>
+            ○  
+        <% end %>
+        </td>
+    </tr>
+    <tr>
+        <th>スケジュールメモ</th>
+        <td><%= @task.introduction %></td>
+    </tr>
+</table>
+
+<div class ="link">
+    <p><%= link_to "スケジュール情報一覧に戻る", :tasks %></p>
+    <p><%= link_to "スケジュールを編集する", [:edit,@task] %></p>
+    <p><%= link_to "スケジュールを削除",@task,method: :delete, data:{confirm:"本当に削除しますか？"} %></p>
+</div>
+
+<footer>
+    <h1>
+        現在の日時 :  <%= Date.today.strftime("%Y年%m月%d日") %>  
+    </h1>
+</footer>

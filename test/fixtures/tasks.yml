@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  start_on: 2021-11-10
+  end_on: 2021-11-10
+  all_day: MyString
+
+two:
+  title: MyString
+  start_on: 2021-11-10
+  end_on: 2021-11-10
+  all_day: MyString
