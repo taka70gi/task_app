@@ -7,10 +7,12 @@ class Task < ApplicationRecord
     validate :date_before_finish
 
     def date_before_start
-        errors.add(:start_on, "は今日以降のものを選択してください") if start_on < Date.today
+        return if end_on.blank? || start_on.blank?
+        errors.add(:end_on, "は開始日以降のものを選択してください") if end_on < start_on
     end
 
     def date_before_finish
-        errors.add(:end_on, "は開始日以降のものを選択してください") if end_on < start_on
+        return if end_on.blank? || start_on.blank?
+        return errors.add(:end_on, "は開始日以降のものを選択してください") if end_on < start_on
     end
 end

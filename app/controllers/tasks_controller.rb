@@ -10,6 +10,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(tasks_params)
+    
     if @task.save
       flash[:notice] = "新規スケジュールを登録しました"
       redirect_to:tasks
