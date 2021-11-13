@@ -1,11 +1,6 @@
 <h3>スケジュール一覧</h3>
 
-<% if flash[:notice] %>
-    <p class="notice"><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:alert] %>
-    <p class="alert"><%= flash[:alert] %></p>
-<% end %>
+<%= render "shared/flash" %>
 
 <table>
     <thead>
@@ -28,12 +23,16 @@
             <td><%= task.id %></td>
             <td><%= task.title %></td>
             <td><%= task.start_on %></td>
-            <td><%= task.end_on%></td>
-            <td><%= task.all_day%></td>
-            <td><%= task.updated_at.to_s(:datetime_jp)%></td>
-            <td><%=link_to "確認", task%></td>
-            <td><%=link_to "編集", [:edit,task]%></td>
-            <td><%=link_to "削除",task,method: :delete, data:{confirm:"本当に削除しますか？"}%></td>
+            <td><%= task.end_on %></td>
+            <td>
+                <% if task.all_day %>
+                    ○  
+                <% end %>
+            </td>
+            <td><%= task.updated_at.to_s(:datetime_jp) %></td>
+            <td><%= link_to "確認", task %></td>
+            <td><%= link_to "編集", [:edit,task] %></td>
+            <td><%= link_to "削除",task,method: :delete, data:{confirm:"本当に削除しますか？"} %></td>
         </tr>
     <% end %>
     </tbody>
@@ -42,7 +41,7 @@
 <p class="link"><%= link_to "スケジュール新規登録", :new_task %></p>
 <footer>
     <h1>
-        現在の日時 :  <%=Date.today.strftime("%Y年%m月%d日")%>  
-        スケジュール合計 : <%=@tasks.count%>
+        現在の日時 :  <%= Date.today.strftime("%Y年%m月%d日") %>  
+        スケジュール合計 : <%= @tasks.count %>
     </h1>
 </footer>
